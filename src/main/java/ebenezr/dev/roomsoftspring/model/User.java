@@ -1,4 +1,4 @@
-package ebenezr.dev.roomsoftspring.domain;
+package ebenezr.dev.roomsoftspring.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+@Table(name = "users")
 
 
 /*
@@ -43,8 +44,9 @@ model User {
  */
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(unique = true, nullable = false)
     private String name;
     private String email;
     private String password;
@@ -60,11 +62,6 @@ public class User {
     private Timestamp updatedAt;
 
 
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "tag")
-    @Column(name = "Value")
-    private List<String> tags = new ArrayList<>();
 
     enum Role {
         USER,

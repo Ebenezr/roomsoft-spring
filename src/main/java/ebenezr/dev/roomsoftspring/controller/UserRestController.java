@@ -1,8 +1,8 @@
-package ebenezr.dev.roomsoftspring.web;
+package ebenezr.dev.roomsoftspring.controller;
 
 
-import ebenezr.dev.roomsoftspring.domain.UserRepository;
-import ebenezr.dev.roomsoftspring.domain.User;
+import ebenezr.dev.roomsoftspring.repository.UserRepository;
+import ebenezr.dev.roomsoftspring.model.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
