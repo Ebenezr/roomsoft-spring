@@ -13,33 +13,24 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-@Table(name = "users")
+@Table(name = "room_amenities")
+public class RoomAmenity {
 
-public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(unique = true, nullable = false)
-    private String name;
-    private String email;
-    private String password;
-    private String phone;
-    private Boolean activeStatus;
-    private Role role;
-    private Boolean superuser;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "departmentId", referencedColumnName = "id")
-    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "roomId", nullable = false)
+    private Room room;
+
+    @ManyToOne
+    @JoinColumn(name = "amenityId", nullable = false)
+    private Amenity amenity;
 
     @CreationTimestamp
     private Timestamp createdAt;
+
     @UpdateTimestamp
     private Timestamp updatedAt;
-
-    enum Role {
-        USER,
-        ADMIN,
-        SUPERUSER
-    }
-
 }
